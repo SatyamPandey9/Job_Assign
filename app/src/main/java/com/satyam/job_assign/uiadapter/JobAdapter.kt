@@ -12,14 +12,14 @@ class JobAdapter : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     private val jobs = mutableListOf<JobItem>()
 
-    // For first-time or refresh loading
+
     fun setJobs(newJobs: List<JobItem>) {
         jobs.clear()
         jobs.addAll(newJobs)
         notifyDataSetChanged()
     }
 
-    // For infinite scrolling (append new items)
+    // For infinite scrolling
     fun addJobs(newJobs: List<JobItem>) {
         val startIndex = jobs.size
         jobs.addAll(newJobs)

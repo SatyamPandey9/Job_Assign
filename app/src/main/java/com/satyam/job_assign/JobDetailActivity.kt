@@ -33,7 +33,7 @@ class JobDetailActivity : AppCompatActivity() {
         binding.textViewDescription.text = description
         binding.textViewPhone.text = phone
 
-        // Click to dial phone number
+
         binding.textViewPhone.setOnClickListener {
             phone?.let {
                 val intent = Intent(Intent.ACTION_DIAL).apply {

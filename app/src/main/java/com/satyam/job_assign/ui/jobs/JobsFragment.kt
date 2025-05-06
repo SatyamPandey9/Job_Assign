@@ -50,7 +50,7 @@ class JobsFragment : Fragment() {
 
             response?.let {
                 binding.textViewJobs.text = "Total jobs: ${it.results.size}"
-                jobAdapter.addJobs(it.results)  // NOTE: should use `addJobs()` not `setJobs()` for infinite scroll
+                jobAdapter.addJobs(it.results)
                 isLoading = false
             } ?: run {
                 Log.e("JobsFragment", "Received null response from API")

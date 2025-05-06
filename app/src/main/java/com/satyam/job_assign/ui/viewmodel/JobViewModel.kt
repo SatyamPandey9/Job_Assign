@@ -29,7 +29,7 @@ class JobViewModel(private val repository: JobRepository) : ViewModel() {
                 val response = repository.getJobs(page)
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        if (page == 1) allJobs.clear() // reset on page 1
+                        if (page == 1) allJobs.clear()
                         allJobs.addAll(it.results)
                         _jobs.postValue(JobResponse(results = allJobs))
                         currentPage = page
