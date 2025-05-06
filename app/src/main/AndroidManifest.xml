@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.satyam.job_assign">
-
     <!-- Internet permission for API calls -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,20 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Job_Assign"
         tools:targetApi="31">
-
         <activity
             android:name=".ui.JobDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

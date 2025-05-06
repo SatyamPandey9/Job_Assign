@@ -12,10 +12,18 @@ class JobAdapter : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     private val jobs = mutableListOf<JobItem>()
 
+    // For first-time or refresh loading
     fun setJobs(newJobs: List<JobItem>) {
         jobs.clear()
         jobs.addAll(newJobs)
         notifyDataSetChanged()
+    }
+
+    // For infinite scrolling (append new items)
+    fun addJobs(newJobs: List<JobItem>) {
+        val startIndex = jobs.size
+        jobs.addAll(newJobs)
+        notifyItemRangeInserted(startIndex, newJobs.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JobViewHolder {
@@ -31,12 +39,12 @@ class JobAdapter : RecyclerView.Adapter<JobAdapter.JobViewHolder>() {
 
     inner class JobViewHolder(private val binding: ItemJobBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(job: JobItem) {
             binding.textViewTitle.text = job.title
             binding.textViewLocation.text = job.location
             binding.textViewSalary.text = job.salary
 
-            // 🔁 On item click, navigate to JobDetailActivity
             binding.root.setOnClickListener {
                 val context = binding.root.context
                 val intent = Intent(context, JobDetailActivity::class.java).apply {
